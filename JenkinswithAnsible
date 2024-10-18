@@ -1,13 +1,10 @@
 pipeline{
-
 agent {
 label 'ansible'
 }
-
-  environment {
+environment {
    AWS_EC2_PRIVATE_KEY=credentials('ec2-private-key') 
   }
-  
 
 options{
 timestamps()
@@ -19,7 +16,8 @@ stages{
   stage('CheckOutCode'){
     steps{
    // git branch: 'master', credentialsId: '957b543e-6f77-4cef-9aec-82e9b0230975', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
-      git credentialsId: 'git_credentials', url: 'https://github.com/yimmyyimmy/maven-web-application.git'
+     // git credentialsId: 'git_credentials', url: 'https://github.com/yimmyyimmy/maven-web-application.git'
+      git branch: 'master', credentialsId: 'git_credentials', url: 'https://github.com/yimmyyimmy/jenkins-with-ansible-for-pipeline.git'
 	
 	}
   }
