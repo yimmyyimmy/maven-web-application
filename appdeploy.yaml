@@ -8,12 +8,12 @@
         state: stopped
     - name: delete old application package
       file:
-        path: /usr/local/apache-tomcat-7.0.76/webapps/maven-web-application.war
+        path: /usr/local/apache-tomcat-10.1.31/webapps/SimpleWebApplication.war
         state: absent
     - name: copy application package
       copy:
         src: target/maven-web-application.war
-        dest: /usr/local/apache-tomcat-7.0.76/webapps/maven-web-application.war
+        dest: /usr/local/apache-tomcat-10.1.31/webapps/SimpleWebApplication.war
         owner: tomcat
         group: tomcat
     - name: start tomcat
@@ -27,6 +27,6 @@
         minutes: 1
     - name: Confirm that 200 OK response is returned
       uri:
-        url: "http://{{ ansible_host }}:8080/maven-web-application/"
+        url: "http://{{ ansible_host }}:8080/SimpleWebApplication/"
         status_code: 200    
 ...
