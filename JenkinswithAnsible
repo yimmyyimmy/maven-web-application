@@ -6,12 +6,7 @@ label 'ansible'
 environment {
    AWS_EC2_PRIVATE_KEY=credentials('ec2-private-key') 
   }
- /* 
-tools{
-maven 'maven3.8.2'
 
-}
-*/
 options{
 timestamps()
 buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
@@ -40,8 +35,6 @@ stage('DeployApp'){
         sh "ansible-playbook -i aws_ec2.yaml  appdeploy.yaml -u ec2-user --private-key=$AWS_EC2_PRIVATE_KEY --limit tomcatservers --ssh-common-args='-o StrictHostKeyChecking=no'"
       } 
 }
-  
-  
 }//Stages Closing
 
 }
